@@ -5,10 +5,9 @@ const products = [
     {id:4,name:"Product 4",Desciption:"This is Discription",price:9000,category:"Laptop"},
     {id:5,name:"Product 5",Desciption:"This is Discription",price:11000,category:"Desktop"},
     {id:6,name:"Product 6",Desciption:"This is Discription",price:6000,category:"Laptop"},
-]
-let search = "Laptop"
-const resultArray = 
-     products.filter((product)=>{
-     return product.category === search
-})//if the product is returning true it will be pprinted
+];
+let category = "productID"
+let text = 1
+const resultArray = products.filter((product)=> product.id === text
+);//if the product is returning true it will be pprinted
 console.log(resultArray);
