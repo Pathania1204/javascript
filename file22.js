@@ -7,31 +7,31 @@ const products = [{
 },{
     id:2,
     name:"Product 2",
-    Desciption:"This is a Discription",
+    Discription:"This is a Discription",
     price:20000,
     category:"Desktop"
 },{
     id:3,
     name:"Product 3",
-    Desciption:"This is Discription",
+    Discription:"This is Discription",
     price:8000,
     category:"Laptop"
 },{
     id:4,
     name:"Product 4",
-    Desciption:"This is Discription",
+    Discription:"This is Discription",
     price:9000,
     category:"Laptop"
 },{
     id:5,
     name:"Product 5",
-    Desciption:"This is Discription",
+    Discription:"This is Discription",
     price:11000,
     category:"Desktop"
 },{
     id:6,
     name:"Product 6",
-    Desciption:"This is Discription",
+    Discription:"This is Discription",
     price:6000,
     category:"Laptop"
 },
@@ -52,29 +52,37 @@ function decrement(productId){
 }
 
 function placeOrder(email) {
-
     const itemsWithTotal = cart.map(item => {
         return {
             ...item,
             total: item.price * item.quantity
         };
     });
-
     const total = itemsWithTotal.reduce((sum, item) => {
         return sum + item.total;
     }, 0);
-
     const order = {
         email: email,
         items: itemsWithTotal,
         orderValue: total,
         orderDate: new Date()
     };
-
-    console.log("Order placed successfully", order);
+    console.log("Order placed successfully");
+    cart.forEach((product) => {
+        console.log(`${product.id}-${product.name}-${product.Discription}-${product.price}-${product.category}-${product.quantity}`);
+    })
     return order;
 }
+// console.log(products);
 
+products.forEach((product)=> {
+    // console.log(product.id,product.name,product.Discription,product.price);
+    console.log(`${product.id}-${product.name}-${product.Discription}-${product.price}`);
+});
+
+
+
+console.log("-------------------------");
 addToCart(1)
 addToCart(3)
 addToCart(5)
