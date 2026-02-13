@@ -33,3 +33,49 @@
 // let score
 // let result = score || 30
 // console.log(result); //30 is result
+
+// let score = 15
+// switch(true){
+//     case (score<=50 && score>=10):{
+//         console.log("Grade C")
+//         break
+//     }
+//     case (score<=80 && score>51):{
+//         console.log("Grade B");
+//         break
+//     }
+//     case (score<=100 && score>81):{
+//         console.log("Grade A");
+//         break
+//     }
+//     default:
+//         console.log("Failed");
+// }
+
+// let subject = "HTML"
+// switch(subject){
+//     case "HTML":{
+//         console.log("HyperText Markup Language");
+//         break
+//     }
+//     case "CSS":{
+//         console.log("Cascading Style Sheet");
+//     }
+//     default:{
+//         console.log("unknown");
+//     }
+// }
+
+let subject = "1"
+switch(subject){ //checks value and datatype 
+    case "1":{
+        console.log("HyperText Markup Language");
+        break
+    }
+    case "2":{
+        console.log("Cascading Style Sheet");
+    }
+    default:{
+        console.log("unknown");
+    }
+}
