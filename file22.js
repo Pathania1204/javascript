@@ -1,100 +1,109 @@
-const products = [{
-    id:1,
-    name:"Product 1",
-    Discription: "This is Discription", 
-    price:30000,
-    category:"Laptop"
-},{
-    id:2,
-    name:"Product 2",
-    Discription:"This is a Discription",
-    price:20000,
-    category:"Desktop"
-},{
-    id:3,
-    name:"Product 3",
-    Discription:"This is Discription",
-    price:8000,
-    category:"Laptop"
-},{
-    id:4,
-    name:"Product 4",
-    Discription:"This is Discription",
-    price:9000,
-    category:"Laptop"
-},{
-    id:5,
-    name:"Product 5",
-    Discription:"This is Discription",
-    price:11000,
-    category:"Desktop"
-},{
-    id:6,
-    name:"Product 6",
-    Discription:"This is Discription",
-    price:6000,
-    category:"Laptop"
-},
+const products = [
+  {
+    id: 1,
+    name: "Product 1",
+    desc: "This is description",
+    price: 100,
+    category: "Laptop",
+  },
+  {
+    id: 2,
+    name: "Product 2",
+    desc: "This is description",
+    price: 120,
+    category: "Desktop",
+  },
+  {
+    id: 3,
+    name: "Product 3",
+    desc: "This is description",
+    price: 150,
+    category: "Laptop",
+  },
+  {
+    id: 4,
+    name: "Product 4",
+    desc: "This is description",
+    price: 100,
+    category: "Laptop",
+  },
+  {
+    id: 5,
+    name: "Product 5",
+    desc: "This is description",
+    price: 120,
+    category: "Desktop",
+  },
+  {
+    id: 6,
+    name: "Product 6",
+    desc: "This is description",
+    price: 150,
+    category: "Laptop",
+  },
 ];
-const cart = []
-function addToCart(productId){
-    const product = products.find((product) => product.id === productId)
-    cart.push({...product,quantity:1})
-    // console.log(product);
+const cart = [];
+function addToCart(productId) {
+  const product = products.find((product) => product.id === productId);
+  cart.push({ ...product, quantity: 1 });
 }
 function increment(productId) {
-    const item = cart.find(product => product.id === productId)
-    item.quantity++
+  const item = cart.find((product) => product.id === productId);
+  item.quantity++;
 }
-function decrement(productId){
-    const item = cart.find(product => product.id === productId)
-    item.quantity--
+function decrement(productId) {
+  const item = cart.find((product) => product.id === productId);
+  item.quantity--;
 }
-
-function placeOrder(email) {
-    const itemsWithTotal = cart.map(item => {
-        return {
-            ...item,
-            total: item.price * item.quantity
-        };
-    });
-    const total = itemsWithTotal.reduce((sum, item) => {
-        return sum + item.total;
-    }, 0);
-    const order = {
-        email: email,
-        items: itemsWithTotal,
-        orderValue: total,
-        orderDate: new Date()
-    };
-    console.log("Order placed successfully");
-    cart.forEach((product) => {
-        console.log(`${product.id}-${product.name}-${product.Discription}-${product.price}-${product.category}-${product.quantity}`);
-    })
-    return order;
+const userEmail = "john@gmail.com";
+function calculateTotal() {
+  let total=cart.reduce((sum,item)=>{
+    return sum+(item.price*item.quantity)
+  },0);
+  // let total = 0;
+  // for(let item of cart) {
+  //   productTotal = item.price * item.quantity;
+  //   total += item.price * item.quantity;
+  // }
+  return total;
 }
-// console.log(products);
+function placeOrder(){
+  if(cart.length === 0) {
+    console.log("Cart is empty");
+    return;
+  }
+  const total = calculateTotal();
 
-products.forEach((product)=> {
-    // console.log(product.id,product.name,product.Discription,product.price);
-    console.log(`${product.id}-${product.name}-${product.Discription}-${product.price}`);
-});
+  const order = {
+    email: userEmail,
+    items: cart, 
+    orderValue: total,
+    //totalValue: productTotal
+  };
+  console.log("Order placed successfully");
+  //console.log(order);
+  order.items.forEach(product=>{
+    console.log(`${product.id}-${product.name}-${product.desc}-${product.category}-${product.price}`)
+  })
 
-
-
-console.log("-------------------------");
-addToCart(1)
-addToCart(3)
-addToCart(5)
+  
+  //console.log("product total", productTotal)
+  console.log("Total order value", total);
+}
+//console.log(products)
+products.forEach(product=>{
+    console.log(`${product.id}-${product.name}-${product.desc}-${product.category}-${product.price}`)
+})
+console.log("------------------------");
+addToCart(1);
+addToCart(3);
+addToCart(5);
 // console.log(cart);
-increment(1)
-increment(5)
-// console.log(cart)
-decrement(1)
-// console.log(cart)
-// const order = {
-//     email:"john@gmail.com",
-//     items:cart,
-//     orderValue:
-// }
-placeOrder()
+increment(1);
+increment(5);
+// console.log(cart);
+decrement(1);
+// console.log(cart);
+decrement(1);
+// console.log(cart);
+placeOrder();
