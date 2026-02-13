@@ -32,11 +32,24 @@
 // const result = add(7,5,8,9)
 // console.log(result);
 
-function add(...arr){
-    let sum = arr.reduce((total,num)=>{
-        return total + num
-    },0)
+// function add(...arr){
+//     let sum = arr.reduce((total,num)=>{
+//         return total + num
+//     },0)
+//     return sum
+// }
+// const result = add(7,5,8,9)
+// console.log(result);
+
+// const add = (...arr ) => {
+//     return arr.reduce((sum,num) => sum+num,0)
+// }
+// console.log(add(4,5,8));
+
+const add = (...args) => {
+    let sum = args.reduce((total,num)=>total+num,0)
     return sum
+
 }
-const result = add(7,5,8,9)
+const result = add(7,9,8,2)
 console.log(result);
