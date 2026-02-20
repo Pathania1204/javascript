@@ -26,6 +26,7 @@
 // const emp2 = new Employee("Cathy")
 // emp2.display()
 
+/////////////////
 // PROTOTYPE
 function Employee(name){
     this.name = name
